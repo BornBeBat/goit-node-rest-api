@@ -93,7 +93,7 @@ const deleteContact = async (req, res, next) => {
 module.exports = {
   getAllContacts,
   getOneContact,
-  deleteContact,
   createContact,
   updateContact,
+  deleteContact,
 };
