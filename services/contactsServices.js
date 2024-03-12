@@ -1,7 +1,6 @@
 const fs = require("fs").promises;
 const path = require("path");
 const { randomUUID } = require("crypto");
-const { HttpError } = require("../helpers/HttpError");
 
 const contactsPath = path.join(__dirname, "..", "db", "contacts.json");
 
