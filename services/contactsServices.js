@@ -35,9 +35,9 @@ async function updateContact(id, data) {
   const idx = contactsList.findIndex((item) => item.id === id);
 
   if (idx === -1) return null;
-
+  console.log();
   contactsList[idx] = {
-    id,
+    ...contactsList[idx],
     ...data,
   };
 
