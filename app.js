@@ -3,8 +3,12 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import mongoose from "mongoose";
+import "dotenv/config";
 
 import contactsRouter from "./routes/contactsRouter.js";
+
+const { DB_HOST, PORT = 3000 } = process.env;
 
 const app = express();
 
@@ -28,4 +32,14 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(3000);
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log("Database connection successful");
+    });
+  })
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });
