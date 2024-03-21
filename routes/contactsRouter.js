@@ -1,10 +1,10 @@
 import express from "express";
-// import ctrl from "../controllers";
 import {
   createContactSchema,
   updateContactSchema,
+  updateContactStatusSchema,
 } from "../schemas/contactsSchemas.js";
-import { validateBody } from "../helpers/validateBody.js";
+import { validateBody } from "../middlewares/index.js";
 import ctrl from "../controllers/index.js";
 
 const contactsRouter = express.Router();
@@ -19,6 +19,12 @@ contactsRouter.put(
   "/:id",
   validateBody(updateContactSchema),
   ctrl.updateContact
+);
+
+contactsRouter.patch(
+  "/:id/favorite",
+  validateBody(updateContactStatusSchema),
+  ctrl.updateContactStatus
 );
 
 contactsRouter.delete("/:id", ctrl.deleteContact);
