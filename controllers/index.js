@@ -1,11 +1,12 @@
-const getAllContacts = require("./getAllContacts");
-const getOneContact = require("./getOneContact");
-const createContact = require("./createContact");
-const updateContact = require("./updateContact");
-const deleteContact = require("./deleteContact");
-const ctrlWrapper = require("../middlewares/ctrlWrapper");
+import { getAllContacts } from "./getAllContacts.js";
+import { getOneContact } from "./getOneContact.js";
+import { createContact } from "./createContact.js";
+import { updateContact } from "./updateContact.js";
+import { deleteContact } from "./deleteContact.js";
 
-module.exports = {
+import { ctrlWrapper } from "../middlewares/ctrlWrapper.js";
+
+export default {
   getAllContacts: ctrlWrapper(getAllContacts),
   getOneContact: ctrlWrapper(getOneContact),
   createContact: ctrlWrapper(createContact),

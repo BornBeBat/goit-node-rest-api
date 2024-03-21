@@ -1,10 +1,8 @@
-const {
-  updateContact: updateContactServises,
-} = require("../services/contactsServices.js");
+import { updateContactServises } from "../services/contactsServices.js";
 
-const { HttpError } = require("../helpers/HttpError.js");
+import { HttpError } from "../helpers/HttpError.js";
 
-const updateContact = async (req, res, next) => {
+export const updateContact = async (req, res, next) => {
   const data = await updateContactServises(req.params.id, req.body);
   if (!data) {
     throw HttpError(404);
@@ -17,5 +15,3 @@ const updateContact = async (req, res, next) => {
     },
   });
 };
-
-module.exports = updateContact;

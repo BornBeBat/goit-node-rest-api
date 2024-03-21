@@ -1,6 +1,6 @@
-const { listContacts } = require("../services/contactsServices.js");
+import { listContacts } from "../services/contactsServices.js";
 
-const getAllContacts = async (req, res, next) => {
+export const getAllContacts = async (req, res, next) => {
   const data = await listContacts();
 
   res.json({
@@ -11,5 +11,3 @@ const getAllContacts = async (req, res, next) => {
     },
   });
 };
-
-module.exports = getAllContacts;
