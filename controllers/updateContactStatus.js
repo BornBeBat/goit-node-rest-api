@@ -1,8 +1,7 @@
 import { updateContactServises } from "../services/contactsServices.js";
-
 import { HttpError } from "../helpers/HttpError.js";
 
-export const updateContact = async (req, res, next) => {
+export const updateContactStatus = async (req, res, next) => {
   const data = await updateContactServises(req.params.id, req.body);
   if (!data) {
     throw HttpError(404);

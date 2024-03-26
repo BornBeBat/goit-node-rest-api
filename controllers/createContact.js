@@ -1,8 +1,8 @@
-const { addContact } = require("../services/contactsServices.js");
+import { addContact } from "../services/contactsServices.js";
 
-const { HttpError } = require("../helpers/HttpError.js");
+import { HttpError } from "../helpers/HttpError.js";
 
-const createContact = async (req, res, next) => {
+export const createContact = async (req, res, next) => {
   const data = await addContact(req.body);
   if (!data) {
     throw HttpError(404);
@@ -15,5 +15,3 @@ const createContact = async (req, res, next) => {
     },
   });
 };
-
-module.exports = createContact;

@@ -1,8 +1,14 @@
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
+// data base password ---> cxoUV4qvAwCDYIFU
+// DB_HOST = mongodb+srv://Bat:cxoUV4qvAwCDYIFU@contacts.ajnjhcd.mongodb.net/contacts_reader?retryWrites=true&w=majority&appName=contacts
+import express from "express";
+import morgan from "morgan";
+import cors from "cors";
+import mongoose from "mongoose";
+import "dotenv/config";
 
-const { contactsRouter } = require("./routes/contactsRouter.js");
+import contactsRouter from "./routes/contactsRouter.js";
+
+const { DB_HOST, PORT = 3000 } = process.env;
 
 const app = express();
 
@@ -26,4 +32,14 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(3000);
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log("Database connection successful");
+    });
+  })
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });

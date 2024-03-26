@@ -1,7 +1,7 @@
-const { removeContact } = require("../services/contactsServices.js");
-const { HttpError } = require("../helpers/HttpError.js");
+import { removeContact } from "../services/contactsServices.js";
+import { HttpError } from "../helpers/HttpError.js";
 
-const deleteContact = async (req, res, next) => {
+export const deleteContact = async (req, res, next) => {
   const data = await removeContact(req.params.id);
   if (!data) {
     throw HttpError(404);
@@ -14,5 +14,3 @@ const deleteContact = async (req, res, next) => {
     },
   });
 };
-
-module.exports = deleteContact;
