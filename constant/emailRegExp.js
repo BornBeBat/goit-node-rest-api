@@ -1,1 +1,1 @@
-export const emailRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi;
+export const emailRegExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;

@@ -1,28 +1,31 @@
-import { Shema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
-import { emailRegExp, subscriptionList } from "../constant";
+import { emailRegExp, subscriptionList } from "../constant/index.js";
 
-const usersShema = new Shema({
-  password: {
-    type: String,
-    minLength: 6,
-    required: [true, "Password is required"],
+const usersShema = new Schema(
+  {
+    password: {
+      type: String,
+      minLength: 6,
+      required: [true, "Password is required"],
+    },
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      match: emailRegExp,
+      unique: true,
+    },
+    subscription: {
+      type: String,
+      enum: subscriptionList,
+      default: "starter",
+    },
+    token: {
+      type: String,
+      default: null,
+    },
   },
-  email: {
-    type: String,
-    required: [true, "Email is required"],
-    match: emailRegExp,
-    unique: true,
-  },
-  subscription: {
-    type: String,
-    enum: subscriptionList,
-    default: "starter",
-  },
-  token: {
-    type: String,
-    default: null,
-  },
-});
+  { versionKey: false }
+);
 
 export const User = model("db-user", usersShema);
