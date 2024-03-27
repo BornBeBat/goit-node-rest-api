@@ -1,6 +1,6 @@
-import { addContact } from "../services/contactsServices.js";
+import { addContact } from "../../services/contactsServices.js";
 
-import { HttpError } from "../helpers/HttpError.js";
+import { HttpError } from "../../helpers/HttpError.js";
 
 export const createContact = async (req, res, next) => {
   const data = await addContact(req.body);

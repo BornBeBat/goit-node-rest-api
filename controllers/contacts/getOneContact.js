@@ -1,6 +1,5 @@
-import { getContactById } from "../services/contactsServices.js";
-
-import { HttpError } from "../helpers/HttpError.js";
+import { HttpError } from "../../helpers/HttpError.js";
+import { getContactById } from "../../services/contactsServices.js";
 
 export const getOneContact = async (req, res, next) => {
   const data = await getContactById(req.params.id);
