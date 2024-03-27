@@ -5,28 +5,30 @@ import {
   updateContactStatusSchema,
 } from "../schemas/contactsSchemas.js";
 import { validateBody } from "../middlewares/index.js";
-import ctrl from "../controllers/index.js";
+import { contactsCtrl } from "../controllers/index.js";
 
-const contactsRouter = express.Router();
+export const contactsRouter = express.Router();
 
-contactsRouter.get("/", ctrl.getAllContacts);
+contactsRouter.get("/", contactsCtrl.getAllContacts);
 
-contactsRouter.get("/:id", ctrl.getOneContact);
+contactsRouter.get("/:id", contactsCtrl.getOneContact);
 
-contactsRouter.post("/", validateBody(createContactSchema), ctrl.createContact);
+contactsRouter.post(
+  "/",
+  validateBody(createContactSchema),
+  contactsCtrl.createContact
+);
 
 contactsRouter.put(
   "/:id",
   validateBody(updateContactSchema),
-  ctrl.updateContact
+  contactsCtrl.updateContact
 );
 
 contactsRouter.patch(
   "/:id/favorite",
   validateBody(updateContactStatusSchema),
-  ctrl.updateContactStatus
+  contactsCtrl.updateContactStatus
 );
 
-contactsRouter.delete("/:id", ctrl.deleteContact);
-
-export default contactsRouter;
+contactsRouter.delete("/:id", contactsCtrl.deleteContact);
