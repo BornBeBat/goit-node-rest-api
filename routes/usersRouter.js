@@ -1,6 +1,6 @@
 import express from "express";
 
-import { validateBody } from "../middlewares/index.js";
+import { validateBody, authenticate } from "../middlewares/index.js";
 import { usersCtrl } from "../controllers/index.js";
 import { addUserShema, loginUserShema } from "../schemas/usersShemas.js";
 
@@ -13,3 +13,5 @@ usersRouter.post(
 );
 
 usersRouter.post("/login", validateBody(loginUserShema), usersCtrl.loginUser);
+
+usersRouter.post("/current", authenticate);

@@ -10,7 +10,7 @@ const { JWT_SECRET } = process.env;
 
 export const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
-  const user = await findUserServise(email);
+  const user = await findUserServise({ email });
 
   if (!user) {
     throw HttpError(401, "Email or password is wrong");

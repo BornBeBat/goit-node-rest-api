@@ -7,12 +7,14 @@ import {
 import { HttpError } from "../../helpers/HttpError.js";
 
 export const registerUser = async (req, res, next) => {
-  const user = await findUserServise(req.body.email);
+  const { email, password } = req.body;
+
+  const user = await findUserServise({ email });
   if (user) {
     throw HttpError(409, "email in use");
   }
 
-  const hashPpassword = await bcript.hash(req.body.password, 10);
+  const hashPpassword = await bcript.hash(password, 10);
 
   const newUser = await createUserServise({
     ...req.body,
