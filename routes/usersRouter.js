@@ -14,4 +14,5 @@ usersRouter.post(
 
 usersRouter.post("/login", validateBody(loginUserShema), usersCtrl.loginUser);
 
-usersRouter.post("/current", authenticate);
+usersRouter.post("/logout", authenticate, usersCtrl.logoutUser);
+usersRouter.post("/current", authenticate, usersCtrl.getCurrent);
