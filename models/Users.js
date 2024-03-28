@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 import { emailRegExp, subscriptionList } from "../constant/index.js";
 
-const usersShema = new Schema(
+const userShema = new Schema(
   {
     password: {
       type: String,
@@ -28,4 +28,4 @@ const usersShema = new Schema(
   { versionKey: false }
 );
 
-export const User = model("db-user", usersShema);
+export const User = model("db-user", userShema);
