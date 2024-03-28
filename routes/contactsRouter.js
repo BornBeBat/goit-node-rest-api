@@ -4,31 +4,34 @@ import {
   updateContactSchema,
   updateContactStatusSchema,
 } from "../schemas/contactsSchemas.js";
-import { validateBody } from "../middlewares/index.js";
+import { authenticate, validateBody } from "../middlewares/index.js";
 import { contactsCtrl } from "../controllers/index.js";
 
 export const contactsRouter = express.Router();
 
-contactsRouter.get("/", contactsCtrl.getAllContacts);
+contactsRouter.get("/", authenticate, contactsCtrl.getAllContacts);
 
-contactsRouter.get("/:id", contactsCtrl.getOneContact);
+contactsRouter.get("/:id", authenticate, contactsCtrl.getOneContact);
 
 contactsRouter.post(
   "/",
+  authenticate,
   validateBody(createContactSchema),
   contactsCtrl.createContact
 );
 
 contactsRouter.put(
   "/:id",
+  authenticate,
   validateBody(updateContactSchema),
   contactsCtrl.updateContact
 );
 
 contactsRouter.patch(
   "/:id/favorite",
+  authenticate,
   validateBody(updateContactStatusSchema),
   contactsCtrl.updateContactStatus
 );
 
-contactsRouter.delete("/:id", contactsCtrl.deleteContact);
+contactsRouter.delete("/:id", authenticate, contactsCtrl.deleteContact);

@@ -3,7 +3,9 @@ import { addContact } from "../../services/contactsServices.js";
 import { HttpError } from "../../helpers/HttpError.js";
 
 export const createContact = async (req, res, next) => {
-  const data = await addContact(req.body);
+  const { _id: owner } = req.user;
+
+  const data = await addContact({ ...req.body, owner });
   if (!data) {
     throw HttpError(404);
   }

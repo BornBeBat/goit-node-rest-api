@@ -22,7 +22,7 @@ export const loginUser = async (req, res, next) => {
   }
 
   const { _id: id } = user;
-  const token = jwt.sign({ id }, JWT_SECRET, { expiresIn: "1h" });
+  const token = jwt.sign({ id }, JWT_SECRET, { expiresIn: "24h" });
   await updateUserServise({ _id: id }, { token });
 
   res.json({
