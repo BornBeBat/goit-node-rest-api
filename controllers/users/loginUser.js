@@ -3,7 +3,7 @@ import {
   findUserServise,
   updateUserServise,
   validatePassword,
-} from "../../services/authServises.js";
+} from "../../services/usersServises.js";
 import { HttpError } from "../../helpers/HttpError.js";
 
 const { JWT_SECRET } = process.env;

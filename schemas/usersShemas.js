@@ -12,3 +12,9 @@ export const loginUserShema = Joi.object({
   password: Joi.string().required(),
   email: Joi.string().pattern(emailRegExp).required(),
 });
+
+export const subscriptionUpdateShema = Joi.object({
+  subscription: Joi.string()
+    .valid(...subscriptionList)
+    .required(),
+});

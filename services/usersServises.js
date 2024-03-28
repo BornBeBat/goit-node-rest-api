@@ -12,7 +12,7 @@ export async function createUserServise(body) {
 }
 
 export async function updateUserServise(id, data) {
-  return User.findByIdAndUpdate(id, data);
+  return User.findByIdAndUpdate(id, data, { new: true });
 }
 
 export async function validatePassword(password, hashPassword) {

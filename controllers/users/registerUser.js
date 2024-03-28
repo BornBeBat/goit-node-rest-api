@@ -3,7 +3,7 @@ import bcript from "bcrypt";
 import {
   createUserServise,
   findUserServise,
-} from "../../services/authServises.js";
+} from "../../services/usersServises.js";
 import { HttpError } from "../../helpers/HttpError.js";
 
 export const registerUser = async (req, res, next) => {
