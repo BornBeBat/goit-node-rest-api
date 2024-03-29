@@ -9,29 +9,28 @@ import { contactsCtrl } from "../controllers/index.js";
 
 export const contactsRouter = express.Router();
 
-contactsRouter.get("/", authenticate, contactsCtrl.getAllContacts);
+contactsRouter.use(authenticate);
 
-contactsRouter.get("/:id", authenticate, contactsCtrl.getOneContact);
+contactsRouter.get("/", contactsCtrl.getAllContacts);
+
+contactsRouter.get("/:id", contactsCtrl.getOneContact);
 
 contactsRouter.post(
   "/",
-  authenticate,
   validateBody(createContactSchema),
   contactsCtrl.createContact
 );
 
 contactsRouter.put(
   "/:id",
-  authenticate,
   validateBody(updateContactSchema),
   contactsCtrl.updateContact
 );
 
 contactsRouter.patch(
   "/:id/favorite",
-  authenticate,
   validateBody(updateContactStatusSchema),
   contactsCtrl.updateContactStatus
 );
 
-contactsRouter.delete("/:id", authenticate, contactsCtrl.deleteContact);
+contactsRouter.delete("/:id", contactsCtrl.deleteContact);
