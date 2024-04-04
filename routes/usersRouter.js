@@ -1,6 +1,6 @@
 import express from "express";
 
-import { validateBody, authenticate } from "../middlewares/index.js";
+import { validateBody, authenticate, upload } from "../middlewares/index.js";
 import { usersCtrl } from "../controllers/index.js";
 import {
   addUserShema,
@@ -25,4 +25,11 @@ usersRouter.patch(
   authenticate,
   validateBody(subscriptionUpdateShema),
   usersCtrl.subscriptionUpdate
+);
+
+usersRouter.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  usersCtrl.updateAvatar
 );
