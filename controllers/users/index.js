@@ -3,6 +3,7 @@ import { loginUser } from "./loginUser.js";
 import { logoutUser } from "./logoutUser.js";
 import { getCurrent } from "./getCurrent.js";
 import { subscriptionUpdate } from "./subscriptionUpdate.js";
+import { updateAvatar } from "./updateAvatar.js";
 
 import { ctrlWrapper } from "../../decorators/ctrlWrapper.js";
 
@@ -12,4 +13,5 @@ export const usersCtrl = {
   logoutUser: ctrlWrapper(logoutUser),
   getCurrent: ctrlWrapper(getCurrent),
   subscriptionUpdate: ctrlWrapper(subscriptionUpdate),
+  updateAvatar: ctrlWrapper(updateAvatar),
 };
