@@ -1,5 +1,5 @@
 import bcript from "bcrypt";
-import { User } from "../models/Users.js";
+import { User } from "../models/User.js";
 
 export async function findUserServise(data) {
   const user = await User.findOne(data);

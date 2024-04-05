@@ -1,4 +1,5 @@
 import bcript from "bcrypt";
+import gravatar from "gravatar";
 
 import {
   createUserServise,
@@ -15,10 +16,11 @@ export const registerUser = async (req, res, next) => {
   }
 
   const hashPpassword = await bcript.hash(password, 10);
-
+  const avatarURL = gravatar.url(email, { s: "350", r: "pg", d: "robohash" });
   const newUser = await createUserServise({
     ...req.body,
     password: hashPpassword,
+    avatarURL,
   });
 
   res.status(201).json({
