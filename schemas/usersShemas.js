@@ -13,6 +13,10 @@ export const loginUserShema = Joi.object({
   email: Joi.string().pattern(emailRegExp).required(),
 });
 
+export const verifyEmailSchema = Joi.object({
+  email: Joi.string().pattern(emailRegExp).required(),
+});
+
 export const subscriptionUpdateShema = Joi.object({
   subscription: Joi.string()
     .valid(...subscriptionList)
