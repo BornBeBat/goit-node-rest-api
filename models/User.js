@@ -31,7 +31,7 @@ const userShema = new Schema(
     },
     verificationToken: {
       type: String,
-      default: "",
+      default: null,
     },
   },
   { versionKey: false }
