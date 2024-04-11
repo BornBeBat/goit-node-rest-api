@@ -14,7 +14,10 @@ export const loginUserShema = Joi.object({
 });
 
 export const verifyEmailSchema = Joi.object({
-  email: Joi.string().pattern(emailRegExp).required(),
+  email: Joi.string()
+    .pattern(emailRegExp)
+    .required()
+    .messages({ "any.required": "missing required field email" }),
 });
 
 export const subscriptionUpdateShema = Joi.object({

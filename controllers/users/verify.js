@@ -16,6 +16,6 @@ export const verify = async (req, res) => {
   });
 
   res.json({
-    message: "Email verify success",
+    message: "Verification successful",
   });
 };

@@ -6,6 +6,7 @@ import {
   addUserShema,
   loginUserShema,
   subscriptionUpdateShema,
+  verifyEmailSchema,
 } from "../schemas/usersShemas.js";
 
 export const usersRouter = express.Router();
@@ -17,6 +18,12 @@ usersRouter.post(
 );
 
 usersRouter.get("/verify/:verificationToken", usersCtrl.verify);
+usersRouter.post(
+  "/verify",
+  validateBody(verifyEmailSchema),
+  usersCtrl.resendEmail
+);
+
 usersRouter.post("/login", validateBody(loginUserShema), usersCtrl.loginUser);
 usersRouter.post("/logout", authenticate, usersCtrl.logoutUser);
 usersRouter.post("/current", authenticate, usersCtrl.getCurrent);
