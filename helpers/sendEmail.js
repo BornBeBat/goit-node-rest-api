@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const { META_PASSWORD, BASE_URL } = process.env;
+const { META_PASSWORD } = process.env;
 
 const nodemailConfig = {
   host: "smtp.meta.ua",
