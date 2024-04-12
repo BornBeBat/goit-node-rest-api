@@ -18,7 +18,7 @@ export const updateAvatar = async (req, res, next) => {
   const resultUpload = path.join(avatarsDir, filename);
 
   const jimpFile = await Jimp.read(tmpUpload);
-  jimpFile.resize(250, 250).write(resultUpload);
+  jimpFile.cover(250, 250).write(resultUpload);
 
   const avatarURL = path.join("avatars", filename);
 

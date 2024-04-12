@@ -15,6 +15,9 @@ export const loginUser = async (req, res, next) => {
   if (!user) {
     throw HttpError(401, "Email or password is wrong");
   }
+  if (!user.verify) {
+    throw HttpError(403, "Email not verify");
+  }
   const comparePassword = await validatePassword(password, user.password);
 
   if (!comparePassword) {
